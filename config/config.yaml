@@ -1,0 +1,31 @@
+## experiment
+experiment: null
+module: null
+
+## dataset
+split: null
+dataset: null
+dataset_config: null
+voxel_size: 0.05
+downsampling: 60000
+
+## dataloader
+batch_size: 4
+num_workers: 8
+
+## optimizer
+train_lr: 1.0e-2
+momentum_for_optim: 0.9
+weight_decay_for_optim: 1.0e-4
+
+## scheduler
+use_scheduler: False
+warmup_epochs: 4
+min_lr: 1.0e-5
+
+## train
+epochs: 10
+pretrained: null
+
+## validation
+# thresholds: [0.7, 0.8, 0.9]
