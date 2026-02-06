@@ -5,7 +5,7 @@ This is the official code repository for **Generalized Category Discovery for Li
 The repository contains the implementation of a method for generalized category discovery in 3D semantic segmentation with limited labeled data. The approach leverages weak supervision and mean teacher frameworks to discover novel object categories in point cloud data.**Note: This repository is still under construction.**
 
 ## Model Checkpoints 
-We provide checkpoint for our models here: https://drive.google.com/drive/folders/16sYzMEvrXDU-OnQ6fC0IOY2lwaSLN6Q_?usp=sharing. 
+We provide checkpoints for our models here: https://drive.google.com/drive/folders/16sYzMEvrXDU-OnQ6fC0IOY2lwaSLN6Q_?usp=sharing. 
 
 ## Overview
 
@@ -18,8 +18,8 @@ The method addresses the challenge of discovering novel object categories in 3D 
 
 ### Supported Datasets
 
-- **SemanticKITTI**: Large-scale outdoor LiDAR semantic segmentation dataset
-- **nuScenes**: Multi-modal autonomous driving dataset with 3D annotations
+- **SemanticKITTI**
+- **nuScenes**
 
 ## Environment Setup
 
