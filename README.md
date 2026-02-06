@@ -2,7 +2,10 @@
 
 This is the official code repository for **Generalized Category Discovery for LiDAR Semantic Segmentation** presented at **WACV 2026**. This code is reconstructed based on [NOPS](https://github.com/LuigiRiz/NOPS).
 
-The repository contains the implementation of a method for generalized category discovery in 3D semantic segmentation with limited labeled data. The approach leverages weak supervision and mean teacher frameworks to discover novel object categories in point cloud data.
+The repository contains the implementation of a method for generalized category discovery in 3D semantic segmentation with limited labeled data. The approach leverages weak supervision and mean teacher frameworks to discover novel object categories in point cloud data.**Note: This repository is still under construction.**
+
+## Model Checkpoints 
+We provide checkpoint for our models here: https://drive.google.com/drive/folders/16sYzMEvrXDU-OnQ6fC0IOY2lwaSLN6Q_?usp=sharing. 
 
 ## Overview
 
@@ -81,9 +84,7 @@ python main.py \
   --checkpoint_dir ./checkpoints/pretrain \
   --log_dir ./logs/pretrain \
   --epochs 50 \
-  --batch_size 4 \
   --use_scheduler \
-  --train_lr 0.01
 ```
 
 For nuScenes:
@@ -100,7 +101,7 @@ python main.py \
   --use_scheduler
 ```
 
-### Stage 2: Novel Category Discovery
+### Stage 2: Generalized Category Discovery
 
 Run the main discovery training with the following command:
 
@@ -114,16 +115,23 @@ python main.py \
   --experiment GCDLSS-split1 \
   --checkpoint_dir ./checkpoints/gcdlss \
   --log_dir ./logs/gcdlss \
-  --pretrained ./checkpoints/pretrain/epoch=46-step=115713.ckpt \
+  --pretrained [checkpoint dir] \
   --epochs 50 \
   --batch_size 4 \
-  --train_lr 0.01 \
-  --finetune_lr 0.0001
 ```
 
 For nuScenes:
 ```bash
-python main_v2.py -s 0 --dataset_config config/nuscenes_minkunet.yaml --use_scheduler --module ExpPretrain --experiment nusc-split100-pretrain --checkpoint_dir ./AAAI_ckpt/nusc_ckpt/pretrain/split100 --log_dir ./AAAI_logdir/pretrain-nusc --dataset nuScenes
+python main_v2.py \ 
+  -s 1 \ 
+  --dataset_config config/nuscenes_minkunet.yaml \
+  --use_scheduler \
+  --module ExpMergeDiscover_LaserMix_MeanTeacher_NCCAdaptive \
+  --experiment GCDLSS-nusc-split1 \
+  --checkpoint_dir ./checkpoints/gcdlss-nusc-split1 \
+  --log_dir ./logs/gcdlss-nusc \
+  --dataset nuScenes \
+  --pretrained [checkpoint dir]
 ```
 
 
